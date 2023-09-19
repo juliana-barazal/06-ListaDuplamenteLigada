@@ -172,14 +172,24 @@ void excluirPrimeiroElemento()
 
 	if (primeiro == NULL) {
 		cout << "Não há elementos a serem excluídos. A lista está vazia." << endl;
+		return;
 	}
 
-	if (primeiro != NULL) {
+	else if (primeiro->prox == NULL) {
+		primeiro = NULL;
+		ultimo = NULL;
+		free(aux);
+		cout << "Primeiro elemento excluído!" << endl;
+	}
+
+	else{
 		primeiro = aux->prox;
 		primeiro->ant = NULL;
 		free(aux);
 		cout << "Primeiro elemento excluído!" << endl;
 	}
+
+	
 }
 
 void excluirUltimoElemento()
@@ -190,7 +200,14 @@ void excluirUltimoElemento()
 		cout << "Não há elementos a serem excluídos. A lista está vazia." << endl;
 	}
 
-	if (primeiro != NULL) {
+	else if (primeiro->prox == NULL) {
+		primeiro = NULL;
+		ultimo = NULL;
+		free(aux);
+		cout << "Último elemento excluído!" << endl;
+	}
+
+	else{
 		ultimo = aux->ant;
 		ultimo->prox = NULL;
 		free(aux);
